@@ -113,43 +113,48 @@ function App() {
           Prueba Técnica – Frontend (ADEN)
         </h1>
         <div className=" mt-2 w-full flex gap-4 justify-center items-center">
-          <input
-            type="text"
-            id="search"
-            placeholder="Buscar por nombre"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className="border rounded-xl p-2 text-sm w-[20rem]"
-          />
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="border rounded-xl p-2 text-sm"
-          >
-            <option value="Todas">Todas</option>
-            <option value="Nature">Nature</option>
-            <option value="Landscape">Landscape</option>
-            <option value="Animals">Animals</option>
-            <option value="Space">Space</option>
-            <option value="Lifestyle">Lifestyle</option>
-          </select>
-          <button
-            onClick={toggleFavoritesView}
-            className={`flex text-sm itec-center items-center gap-2 rounded-xl p-2 ${
-              showFavorites
-                ? "bg-yellow-300 hover:bg-yellow-400"
-                : "bg-gray-50 hover:bg-gray-200"
-            }`}
-          >
-            <Star
-              size={25}
-              className={`stroke-none ${
-                showFavorites ? "fill-yellow-600" : "fill-gray-300"
-              } transition-colors`}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <input
+              type="text"
+              id="search"
+              placeholder="Buscar por nombre"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="border rounded-xl p-2 text-sm max-w-[20rem]"
             />
-            Favoritos
-          </button>
+            <div className="flex gap-4">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="border rounded-xl p-2 text-sm"
+              >
+                <option value="Todas">Todas</option>
+                <option value="Nature">Nature</option>
+                <option value="Landscape">Landscape</option>
+                <option value="Animals">Animals</option>
+                <option value="Space">Space</option>
+                <option value="Lifestyle">Lifestyle</option>
+              </select>
+              <button
+                onClick={toggleFavoritesView}
+                className={`flex text-sm itec-center items-center gap-2 rounded-xl p-2 ${
+                  showFavorites
+                    ? "bg-yellow-300 hover:bg-yellow-400"
+                    : "bg-gray-50 hover:bg-gray-200"
+                }`}
+              >
+                <Star
+                  size={25}
+                  className={`stroke-none ${
+                    showFavorites ? "fill-yellow-600" : "fill-gray-300"
+                  } transition-colors`}
+                />
+                Favoritos
+              </button>
+            </div>
+          </div>
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-10">
           {filteredData.map((img, idx) => (
             <ImageCard key={idx} image={img} />
